@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:rm_app/services/rm_api_service.dart';
 import '../models/character.dart';
+import 'character_details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       body: FutureBuilder<List<Character>>(
+
         future: _futureCharacters,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -41,6 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder: (context, index) {
                 final character = characters[index];
                 return Card(
+                  
+                  
                   margin:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   elevation: 4,
@@ -48,6 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: ListTile(  
+                     onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CharacterDetailsScreen(character: character),
+                        ),
+                      );
+                    },  
                     leading: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: CachedNetworkImage(
