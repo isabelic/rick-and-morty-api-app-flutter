@@ -52,20 +52,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: ListTile(  
+                    
                      onTap: () {
-                      Navigator.push(
+                      print("Clicou no personagem:${character.name}");
+                      Navigator.push(//empilhar varias telas
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => CharacterDetailsScreen(character: character),
+                        MaterialPageRoute(//biblioteca do google - criando rotas
+                          builder: (context) => 
+                          CharacterDetailsScreen(character),
                         ),
                       );
                     },  
                     leading: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: CachedNetworkImage(
-                        imageUrl: character.image,
-                        width: 50,
-                        height: 50,
+                        imageUrl: character.image,//ajuste da imagem na tela
+                        width: 50,//largura 
+                        height: 50,// altura
                         fit: BoxFit.cover,
                         placeholder: (context, url) =>
                             const CircularProgressIndicator(),

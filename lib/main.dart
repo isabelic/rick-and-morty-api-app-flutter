@@ -11,6 +11,7 @@ class RickAndMortyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,// tirar o debug da lateral 
       title: 'Rick and Morty',
       theme: ThemeData(
         primarySwatch: Colors.teal,
